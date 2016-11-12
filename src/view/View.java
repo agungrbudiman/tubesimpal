@@ -5,10 +5,12 @@
  */
 package view;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author agungrb
  */
 public interface View {
-    
+    public void addListener(ActionListener e);
 }
