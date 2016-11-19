@@ -27,21 +27,65 @@ public class ViewHalamanUtama extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bOlahData = new javax.swing.JButton();
+        HalamanUtama = new javax.swing.JTextField();
+        bPelaporan = new javax.swing.JButton();
+        bMutasi = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        bOlahData.setText("Olah Data");
+        bOlahData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bOlahDataActionPerformed(evt);
+            }
+        });
+
+        HalamanUtama.setText("SISTEM INFORMASI INVENTARIS BARANG");
+
+        bPelaporan.setText("Laporan Data");
+
+        bMutasi.setText("Mutasi Data");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(HalamanUtama, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bMutasi, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(bOlahData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bPelaporan, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(HalamanUtama, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bOlahData)
+                .addGap(18, 18, 18)
+                .addComponent(bPelaporan)
+                .addGap(18, 18, 18)
+                .addComponent(bMutasi)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bOlahDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOlahDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bOlahDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +123,9 @@ public class ViewHalamanUtama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField HalamanUtama;
+    private javax.swing.JButton bMutasi;
+    private javax.swing.JButton bOlahData;
+    private javax.swing.JButton bPelaporan;
     // End of variables declaration//GEN-END:variables
 }
