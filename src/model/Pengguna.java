@@ -10,16 +10,25 @@ package model;
  * @author agungrb
  */
 public class Pengguna {
-    private String namaUser;
-    private String alamatUser;
-    private String emailUser;
-    private String username;
-    private String password;
+   private String namaUser;
+   private String alamatUser;
+   private String emailUser;
+   private String username;
+   private String password;
 
-public Pengguna (String namaUser, String alamatUser, String username, String password){
+    public Pengguna(String namaUser, String username, String password) {
         this.namaUser = namaUser;
-        this.alamatUser = alamatUser;
-        this.emailUser = emailUser;
         this.username = username;
         this.password = password;
-}}
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+   
+   
+}
