@@ -26,10 +26,8 @@ public class DataAset {
         this.lokasiAset = lokasiAset;
 }
 
-    public void InsertAset(DataAset a){
-       // list.DataAset.insert(a);
 
-    }
+
     public String getKodeAset() {
         return kodeAset;
     }
