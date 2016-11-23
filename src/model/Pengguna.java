@@ -22,7 +22,5 @@ public class Pengguna {
 
     public String getPassword() {
         return password;
-    }
-    
-    
+    } 
 }
