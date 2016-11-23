@@ -17,19 +17,19 @@ public class DataAset {
     private String KategoriAset;
     private String hargaAset;
     private String lokasiAset;
-    
-    public DataAset (String kodeAset, String namaAset, int jumlahAset, String kategoriAset, String hargaAset, String lokasiAset){
+
+    public DataAset(String kodeAset, String namaAset, String pemilikAset, int jumlahAset, String KategoriAset, String hargaAset, String lokasiAset) {
         this.kodeAset = kodeAset;
         this.namaAset = namaAset;
+        this.pemilikAset = pemilikAset;
         this.jumlahAset = jumlahAset;
-        this.KategoriAset = kategoriAset;
+        this.KategoriAset = KategoriAset;
+        this.hargaAset = hargaAset;
         this.lokasiAset = lokasiAset;
-}
-
-    public void InsertAset(DataAset a){
-       // list.DataAset.insert(a);
-
     }
+    
+    
+    
     public String getKodeAset() {
         return kodeAset;
     }

@@ -10,5 +10,19 @@ package model;
  * @author agungrb
  */
 public class Pengguna {
+    private String namaUser;
+    private String username;
+    private String password;
+    private String alamatUser;
+    private String emailUser;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
     
 }

@@ -9,6 +9,11 @@ package model;
  *
  * @author agungrb
  */
-public class Lahan {
-    
+public class Lahan extends DataAset {
+    private String luasLahan;
+
+    public Lahan(String luasLahan, String kodeAset, String namaAset, String pemilikAset, int jumlahAset, String KategoriAset, String hargaAset, String lokasiAset) {
+        super(kodeAset, namaAset, pemilikAset, jumlahAset, KategoriAset, hargaAset, lokasiAset);
+        this.luasLahan = luasLahan;
+    }  
 }

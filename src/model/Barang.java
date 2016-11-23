@@ -9,67 +9,11 @@ package model;
  *
  * @author agungrb
  */
-public class Barang {
-private String kodeAset;
-    private String namaAset;
-    private String pemilikAset;
-    private int jumlahAset;
-    private String KategoriAset;
-    private String hargaAset;
-    private String lokasiAset;
-    
-    public Barang (String kodeAset, String namaAset, int jumlahAset, String kategoriAset, String hargaAset, String lokasiAset){
-        this.kodeAset = kodeAset;
-        this.namaAset = namaAset;
-        this.jumlahAset = jumlahAset;
-        this.KategoriAset = kategoriAset;
-        this.lokasiAset = lokasiAset;
-}
+public class Barang extends DataAset {
 
-    public void InsertAset(DataAset a){
-       // list.DataAset.insert(a);
-
-    }
-    public String getKodeAset() {
-        return kodeAset;
-    }
-    public void setKodeAset(String kodeAset){
-        this.kodeAset = kodeAset;
+    public Barang(String kodeAset, String namaAset, String pemilikAset, int jumlahAset, String KategoriAset, String hargaAset, String lokasiAset) {
+        super(kodeAset, namaAset, pemilikAset, jumlahAset, KategoriAset, hargaAset, lokasiAset);
     }
     
-    public String getNamaAset() {
-        return namaAset;
-    }
-    public void setNamaAset(String namaAset){
-        this.namaAset = namaAset;
-    }
-    
-    public String getPemilikAset() {
-        return pemilikAset;
-    }
-    public void setPemilikAset(String pemilikAset){
-        this.pemilikAset = pemilikAset;
-    }
-    
-    public int getJumlahAset() {
-        return jumlahAset;
-    }
-    public void setJumlahAset(int jumlahAset) {
-        this.jumlahAset = jumlahAset;
-    }
-    
-    public String getHargaAset(){
-        return hargaAset;
-    }
-    public void setHargaAset(String hargaAset) {
-        this.hargaAset = hargaAset;
-    }
-    
-    public String getLokasiAset() {
-        return lokasiAset;
-    }
-    public void setLokasiAset(String lokasiAset) {
-        this.lokasiAset = lokasiAset;
-}
 }
 
