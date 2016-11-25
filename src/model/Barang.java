@@ -11,8 +11,10 @@ package model;
  */
 public class Barang extends DataAset {
 
-    public Barang(String kodeAset, String namaAset, String pemilikAset, int jumlahAset, String KategoriAset, String hargaAset, String lokasiAset) {
-        super(kodeAset, namaAset, pemilikAset, jumlahAset, KategoriAset, hargaAset, lokasiAset);
+    public Barang(String kodeAset, String namaAset, String pemilikAset, int jumlahAset, String KategoriAset, String hargaAset, LokasiAset lokasiAset) {
+        super(kodeAset, namaAset, pemilikAset, KategoriAset, hargaAset);
+        super.setLokasiAset(lokasiAset);
+        super.setJumlahAset(jumlahAset);
     }
     
 }

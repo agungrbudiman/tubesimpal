@@ -5,6 +5,8 @@
  */
 package control;
 
+import model.*;
+
 /**
  *
  * @author agungrb
@@ -15,7 +17,16 @@ public class driver {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Pengguna p = new Pengguna("Admin","admin","admin");
+        Aplikasi app = new Aplikasi();
+        app.addPengguna(p);
+        app.addLokasiAset(new LokasiAset("-","-"));
+        app.addLokasiAset(new LokasiAset("GSG","Gd Serba Guna"));
+        app.addLokasiAset(new LokasiAset("GDA","Gd E"));
+        app.addLokasiAset(new LokasiAset("GDB","Gd F"));
+        app.addBarang(new Barang(app.getKodeBarang(),"Vixion","agung",10,"Kendaraan","10jt",app.listLokasi.get(0)));
+        app.addLahan(new Lahan("10 hektar",app.getKodeLahan(),"Tanah sawah","Kampus","Hibah","2 Milyar"));
+        Controller c = new Controller(app);
     }
     
 }

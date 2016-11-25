@@ -16,15 +16,26 @@ public class Aplikasi {
     public ArrayList<Lahan> listLahan;
     public ArrayList<Barang> listBarang;
     public ArrayList<Pengguna> listPengguna;
-    
+    private int kodeBarang,kodeLahan;
+
+    public Aplikasi() {
+        listLokasi = new ArrayList();
+        listLahan = new ArrayList();
+        listBarang = new ArrayList();
+        listPengguna = new ArrayList();
+        kodeBarang = 0;kodeLahan = 0;
+    }
+ 
     public void addPengguna(Pengguna p) {
         listPengguna.add(p);
     }
     public void addLahan(Lahan lahan) {
         listLahan.add(lahan);
+        kodeLahan++;
     }
     public void addBarang(Barang barang) {
         listBarang.add(barang);
+        kodeBarang++;
     }
     public void addLokasiAset(LokasiAset lokasi) {
         listLokasi.add(lokasi);
@@ -45,5 +56,15 @@ public class Aplikasi {
         }
         return null;
     }
+
+    public String getKodeBarang() {
+        return "BRG-"+kodeBarang;
+    }
+
+    public String getKodeLahan() {
+        return "LHN-"+kodeLahan;
+    }
+    
+    
     
 }

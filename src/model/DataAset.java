@@ -16,16 +16,14 @@ public class DataAset {
     private int jumlahAset;
     private String KategoriAset;
     private String hargaAset;
-    private String lokasiAset;
+    private LokasiAset lokasiAset;
 
-    public DataAset(String kodeAset, String namaAset, String pemilikAset, int jumlahAset, String KategoriAset, String hargaAset, String lokasiAset) {
+    public DataAset(String kodeAset, String namaAset, String pemilikAset, String KategoriAset, String hargaAset) {
         this.kodeAset = kodeAset;
         this.namaAset = namaAset;
         this.pemilikAset = pemilikAset;
-        this.jumlahAset = jumlahAset;
         this.KategoriAset = KategoriAset;
         this.hargaAset = hargaAset;
-        this.lokasiAset = lokasiAset;
     }
     
     
@@ -65,10 +63,21 @@ public class DataAset {
         this.hargaAset = hargaAset;
     }
     
-    public String getLokasiAset() {
+    public LokasiAset getLokasiAset() {
         return lokasiAset;
     }
-    public void setLokasiAset(String lokasiAset) {
+    
+    public void setLokasiAset(LokasiAset lokasiAset) {
         this.lokasiAset = lokasiAset;
-}
+    }
+
+    public String getKategoriAset() {
+        return KategoriAset;
+    }
+
+    public void setKategoriAset(String KategoriAset) {
+        this.KategoriAset = KategoriAset;
+    }
+    
+    
 }

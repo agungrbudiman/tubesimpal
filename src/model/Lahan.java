@@ -12,8 +12,14 @@ package model;
 public class Lahan extends DataAset {
     private String luasLahan;
 
-    public Lahan(String luasLahan, String kodeAset, String namaAset, String pemilikAset, int jumlahAset, String KategoriAset, String hargaAset, String lokasiAset) {
-        super(kodeAset, namaAset, pemilikAset, jumlahAset, KategoriAset, hargaAset, lokasiAset);
+    public Lahan(String luasLahan, String kodeAset, String namaAset, String pemilikAset, String KategoriAset,String hargaAset) {
+        super(kodeAset, namaAset, pemilikAset, KategoriAset, hargaAset);
         this.luasLahan = luasLahan;
     }  
+
+    public String getLuasLahan() {
+        return luasLahan;
+    }
+    
+    
 }

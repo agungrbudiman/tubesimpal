@@ -13,7 +13,7 @@ public class LokasiAset {
     private String namalokasi;
     private String kodelokasi;
     
-    public LokasiAset (String namalokasi, String kodelokasi) {
+    public LokasiAset (String kodelokasi, String namalokasi) {
         this.namalokasi=namalokasi;
         this.kodelokasi=kodelokasi;
 }
@@ -33,4 +33,12 @@ public class LokasiAset {
     public void setKodelokasi(String kodelokasi) {
         this.kodelokasi = kodelokasi;
     }
+    
+
+    @Override
+    public String toString() {
+        return namalokasi;
+    }
+    
+    
 }

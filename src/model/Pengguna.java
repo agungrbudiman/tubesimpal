@@ -16,11 +16,24 @@ public class Pengguna {
     private String alamatUser;
     private String emailUser;
 
+    public Pengguna(String namaUser, String username, String password) {
+        this.namaUser = namaUser;
+        this.username = username;
+        this.password = password;
+    }
+
+    
+    
     public String getUsername() {
         return username;
     }
 
     public String getPassword() {
         return password;
-    } 
+    }
+
+    public String getNamaUser() {
+        return namaUser;
+    }
+
 }
