@@ -20,6 +20,7 @@ public class Controller implements ActionListener {
     private Aplikasi app;
     private View view;
     private Pengguna session;
+    private Barang b;
     
     public Controller(Aplikasi app) {
         this.app = app;
@@ -52,6 +53,7 @@ public class Controller implements ActionListener {
         ViewOlahData x = new ViewOlahData();
         for (LokasiAset l : app.listLokasi) {
             x.setLokasi_brg(l);
+            x.setLokasi_brg2(l);
         }
         x.setVisible(true);
         x.addListener(this);
@@ -154,7 +156,7 @@ public class Controller implements ActionListener {
             else if(source.equals(x.getBtnRefresh_lhn())) {
                 int i = 0;
                 for (Lahan l : app.listLahan) {
-                    x.showData_lhn(app.getKodeLahan(), l.getLuasLahan(), l.getNamaAset(), 
+                    x.showData_lhn(l.getKodeAset(), l.getLuasLahan(), l.getNamaAset(), 
                             l.getHargaAset(), l.getPemilikAset(), i);
                     i++;
                 }
@@ -197,6 +199,46 @@ public class Controller implements ActionListener {
                     
                 }
             }
+            else if(source.equals(x.getBtnCari_upd())) {
+                String kode_brg = x.getTxKode_upd();
+                b = app.cariBarang(kode_brg);
+                if(b != null) {
+                    x.setTxNama_upd_hasil(b.getNamaAset());
+                    JOptionPane.showMessageDialog(x.getRootPane(), "Barang ditemukan", "Ditemukan", 1);
+                }
+                else {
+                    b = null;
+                    JOptionPane.showMessageDialog(x.getRootPane(), "Barang tidak ditemukan", "Gagal", 0);
+                }
+            }
+            else if(source.equals(x.getBtnSubmit_upd())) {
+                try {
+                    if(b!=null) {
+                        String nama = x.getTxNama_upd();
+                        int jumlah = x.getTxJumlah_upd();
+                        String harga = x.getTxHarga_upd();
+                        LokasiAset lokasi = (LokasiAset) x.getLokasi_brg2();
+                        if(!nama.equals("") && jumlah != 0 && !harga.equals("") && lokasi != null) {
+                            b.setNamaAset(nama);
+                            b.setJumlahAset(jumlah);
+                            b.setHargaAset(harga);
+                            b.setLokasiAset(lokasi);
+                            app.listBarang.set(app.listBarang.indexOf(b), b);
+                            JOptionPane.showMessageDialog(x.getRootPane(), "Data telah disimpan", "Berhasil", 1);
+                            b = null;
+                        } else {
+                            JOptionPane.showMessageDialog(x.getRootPane(), "Kolom harus diisi semua", "Gagal", 0);
+                        }
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(x.getRootPane(), "Cari barang telebih dahulu", "Gagal", 0);
+                    }
+                    
+                } catch (Exception ee) {
+                    JOptionPane.showMessageDialog(x.getRootPane(), ee, "Gagal", 0);
+                }
+            }
+            
         }
         else if(view instanceof ViewPelaporan) {
             ViewPelaporan x = (ViewPelaporan) view;

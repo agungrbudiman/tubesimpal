@@ -80,6 +80,18 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
         tabelData_lhn = new javax.swing.JTable();
         btnRefresh_lhn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        txKode_upd = new javax.swing.JTextField();
+        btnCari_upd = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        txNama_upd_hasil = new javax.swing.JTextField();
+        txJumlah_upd = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txHarga_upd = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        txNama_upd = new javax.swing.JTextField();
+        cbLokasi_brg2 = new javax.swing.JComboBox();
+        btnSubmit_upd = new javax.swing.JButton();
         btnKembali = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -139,9 +151,9 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
                     .addComponent(txJumlah_brg)
                     .addComponent(txHarga_brg, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                     .addComponent(txPemilik_brg))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(521, Short.MAX_VALUE)
                 .addComponent(btnSubmit_brg)
                 .addContainerGap())
         );
@@ -219,7 +231,7 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
                             .addComponent(txLuas_lhn)
                             .addComponent(txPemilik_lhn)
                             .addComponent(txHarga_lhn))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSubmit_lhn)
@@ -276,7 +288,7 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txKodeLokasi, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addComponent(txNamaLokasi))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSubmit_lok)
@@ -337,6 +349,8 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
@@ -360,7 +374,7 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnRefresh_brg)))
@@ -380,6 +394,8 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
 
         tabelData_lhn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -414,7 +430,7 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnRefresh_lhn)))
@@ -451,15 +467,87 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
 
         jTabbedPane1.addTab("Lihat Data", jPanel2);
 
+        txKode_upd.setText("Kode Barang");
+
+        btnCari_upd.setText("Cari");
+
+        jLabel12.setText("Nama");
+
+        txNama_upd_hasil.setEditable(false);
+        txNama_upd_hasil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txNama_upd_hasilActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Jumlah");
+
+        jLabel18.setText("Harga");
+
+        jLabel19.setText("Lokasi");
+
+        btnSubmit_upd.setText("Submit");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 597, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txNama_upd_hasil, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txKode_upd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCari_upd))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbLokasi_brg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txNama_upd)
+                                .addComponent(txJumlah_upd)
+                                .addComponent(txHarga_upd, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)))))
+                .addContainerGap(219, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSubmit_upd)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 328, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txKode_upd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCari_upd))
+                .addGap(18, 18, 18)
+                .addComponent(txNama_upd_hasil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txNama_upd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txJumlah_upd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txHarga_upd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(cbLokasi_brg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(btnSubmit_upd)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Update Data", jPanel3);
@@ -495,6 +583,10 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
     private void btnRefresh_brgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh_brgActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRefresh_brgActionPerformed
+
+    private void txNama_upd_hasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNama_upd_hasilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txNama_upd_hasilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -533,6 +625,10 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
     
     public void setLokasi_brg(Object b) {
         cbLokasi_brg.addItem(b);
+    }
+    
+    public void setLokasi_brg2(Object b) {
+        cbLokasi_brg2.addItem(b);
     }
     
     public Object getLokasi_brg() {
@@ -582,9 +678,39 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
     public JButton getBtnRefresh_lhn() {
         return btnRefresh_lhn;
     }
-    
-    
-    
+
+    public String getTxHarga_upd() {
+        return txHarga_upd.getText();
+    }
+
+    public int getTxJumlah_upd() {
+        if(!txJumlah_upd.getText().equals("")) {
+            return Integer.parseInt(txJumlah_upd.getText());
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public String getTxKode_upd() {
+        return txKode_upd.getText();
+    }
+
+    public String getTxNama_upd() {
+        return txNama_upd.getText();
+    }
+
+    public void setTxNama_upd_hasil(String s) {
+        txNama_upd_hasil.setText(s);
+    }
+
+    public JButton getBtnSubmit_upd() {
+        return btnSubmit_upd;
+    }
+     
+    public Object getLokasi_brg2() {
+        return cbLokasi_brg2.getModel().getSelectedItem();
+    }
     
     
     public void showData_brg(String kode, String nama, String kategori, int jumlah, String harga, String lokasi,int i) {
@@ -605,18 +731,25 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCari_upd;
     private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnRefresh_brg;
     private javax.swing.JButton btnRefresh_lhn;
     private javax.swing.JButton btnSubmit_brg;
     private javax.swing.JButton btnSubmit_lhn;
     private javax.swing.JButton btnSubmit_lok;
+    private javax.swing.JButton btnSubmit_upd;
     private javax.swing.JComboBox cbLokasi_brg;
+    private javax.swing.JComboBox cbLokasi_brg2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -643,14 +776,19 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
     private javax.swing.JTable tabelData_lhn;
     private javax.swing.JTextField txHarga_brg;
     private javax.swing.JTextField txHarga_lhn;
+    private javax.swing.JTextField txHarga_upd;
     private javax.swing.JTextField txJumlah_brg;
+    private javax.swing.JTextField txJumlah_upd;
     private javax.swing.JTextField txKategori_brg;
     private javax.swing.JTextField txKategori_lhn;
     private javax.swing.JTextField txKodeLokasi;
+    private javax.swing.JTextField txKode_upd;
     private javax.swing.JTextField txLuas_lhn;
     private javax.swing.JTextField txNamaLokasi;
     private javax.swing.JTextField txNama_brg;
     private javax.swing.JTextField txNama_lhn;
+    private javax.swing.JTextField txNama_upd;
+    private javax.swing.JTextField txNama_upd_hasil;
     private javax.swing.JTextField txPemilik_brg;
     private javax.swing.JTextField txPemilik_lhn;
     // End of variables declaration//GEN-END:variables
@@ -663,5 +801,11 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
         btnSubmit_lok.addActionListener(e);
         btnSubmit_lhn.addActionListener(e);
         btnRefresh_lhn.addActionListener(e);
+        btnCari_upd.addActionListener(e);
+        btnSubmit_upd.addActionListener(e);
+    }
+
+    public JButton getBtnCari_upd() {
+        return btnCari_upd;
     }
 }

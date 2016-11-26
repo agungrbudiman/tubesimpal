@@ -23,7 +23,7 @@ public class Aplikasi {
         listLahan = new ArrayList();
         listBarang = new ArrayList();
         listPengguna = new ArrayList();
-        kodeBarang = 0;kodeLahan = 0;
+        kodeBarang = 1;kodeLahan = 1;
     }
  
     public void addPengguna(Pengguna p) {
