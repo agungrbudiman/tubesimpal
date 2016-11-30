@@ -25,6 +25,7 @@ public class Controller implements ActionListener {
     public Controller(Aplikasi app) {
         this.app = app;
         session = null;
+        b = null;
         halamanutama();
     }
     
@@ -119,6 +120,7 @@ public class Controller implements ActionListener {
         else if(view instanceof ViewOlahData) {
             ViewOlahData x = (ViewOlahData) view;
             if(source.equals(x.getBtnKembali())) {
+                b = null;
                 halamanutama();
                 x.dispose();
             }
@@ -203,11 +205,13 @@ public class Controller implements ActionListener {
                 String kode_brg = x.getTxKode_upd();
                 b = app.cariBarang(kode_brg);
                 if(b != null) {
-                    x.setTxNama_upd_hasil(b.getNamaAset());
+                    x.setTxNama_upd(b.getNamaAset());
+                    x.setTxHarga_upd(b.getHargaAset());
+                    x.setTxJumlah_upd(b.getJumlahAset());
+                    x.setSelected_Lokasi_brg2(b.getLokasiAset());
                     JOptionPane.showMessageDialog(x.getRootPane(), "Barang ditemukan", "Ditemukan", 1);
                 }
                 else {
-                    b = null;
                     JOptionPane.showMessageDialog(x.getRootPane(), "Barang tidak ditemukan", "Gagal", 0);
                 }
             }
@@ -225,7 +229,6 @@ public class Controller implements ActionListener {
                             b.setLokasiAset(lokasi);
                             app.listBarang.set(app.listBarang.indexOf(b), b);
                             JOptionPane.showMessageDialog(x.getRootPane(), "Data telah disimpan", "Berhasil", 1);
-                            b = null;
                         } else {
                             JOptionPane.showMessageDialog(x.getRootPane(), "Kolom harus diisi semua", "Gagal", 0);
                         }
