@@ -7,6 +7,7 @@ package view;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -44,6 +45,8 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
         txPemilik_baru = new javax.swing.JTextField();
         btnMutasi = new javax.swing.JButton();
         btnKembali = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        cbKondisi = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mutasi Data");
@@ -80,6 +83,10 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
 
         btnKembali.setText("Kembali");
 
+        jLabel4.setText("Kondisi :");
+
+        cbKondisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ready", "Rusak", "Sedang diperbaiki" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,19 +99,23 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnMutasi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnKembali))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cbKondisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
                             .addComponent(txNama, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txPemilik, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txPemilik_baru)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnMutasi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnKembali))))
+                            .addComponent(txPemilik_baru)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +134,11 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txPemilik_baru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cbKondisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMutasi)
                     .addComponent(btnKembali)))
@@ -180,16 +195,49 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
     public JButton getBtnKembali() {
         return btnKembali;
     }
+
+    public JButton getBtnCari() {
+        return btnCari;
+    }
+
+    public JButton getBtnMutasi() {
+        return btnMutasi;
+    }
+
+    public String getKode() {
+        return txKode.getText();
+    }
+
+    public String getPemilik_baru() {
+        return txPemilik_baru.getText();
+    }
+
+    public void setNama(String nama) {
+        txNama.setText(nama);
+    }
+
+    public void setPemilik(String pemilik) {
+        txPemilik.setText(pemilik);
+    }
     
+    public void setKondisi(String s) {
+        cbKondisi.addItem(s);
+    }
+    
+    public String getKondisi() {
+        return (String) cbKondisi.getSelectedItem();
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnKembali;
     private javax.swing.JButton btnMutasi;
+    private javax.swing.JComboBox<String> cbKondisi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -202,5 +250,7 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
     @Override
     public void addListener(ActionListener e) {
         btnKembali.addActionListener(e);
+        btnMutasi.addActionListener(e);
+        btnCari.addActionListener(e);
     }
 }

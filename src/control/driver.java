@@ -24,8 +24,9 @@ public class driver {
         app.addLokasiAset(new LokasiAset("GSG","Gd Serba Guna"));
         app.addLokasiAset(new LokasiAset("GDA","Gd E"));
         app.addLokasiAset(new LokasiAset("GDB","Gd F"));
-        app.addBarang(new Barang(app.getKodeBarang(),"Vixion","agung",10,"Kendaraan","10jt",app.listLokasi.get(0)));
-        app.addLahan(new Lahan("10 hektar",app.getKodeLahan(),"Tanah sawah","Kampus","Hibah","2 Milyar"));
+        app.addBarang(new Barang(app.getKodeBarang(),"Vixion","agung",10,"Kendaraan",100,app.listLokasi.get(0)));
+        app.listBarang.get(0).addRiwayat(new Riwayat(p,"Input data"));
+        app.addLahan(new Lahan("10 hektar",app.getKodeLahan(),"Tanah sawah","Kampus","Hibah",200));
         Controller c = new Controller(app);
     }
     

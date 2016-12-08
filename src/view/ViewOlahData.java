@@ -340,25 +340,25 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
 
         tabelData_brg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Kode", "Nama", "Kategori", "Jumlah", "Harga", "Lokasi"
+                "Kode", "Nama", "Kategori", "Jumlah", "Harga", "Lokasi", "Pemilik"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -587,8 +587,13 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
         return btnSubmit_brg;
     }
 
-    public String getTxHarga_brg() {
-        return txHarga_brg.getText();
+    public long getTxHarga_brg() {
+        if(!txHarga_brg.getText().equals("")) {
+            return Long.parseLong(txHarga_brg.getText());    
+        }
+        else {
+            return 0;
+        }
     }
 
     public int getTxJumlah_brg() {
@@ -662,16 +667,26 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
         return btnSubmit_lhn;
     }
 
-    public String getTxHarga_lhn() {
-        return txHarga_lhn.getText();
+    public long getTxHarga_lhn() {
+        if(!txHarga_lhn.getText().equals("")) {
+            return Long.parseLong(txHarga_lhn.getText());  
+        }
+        else {
+            return 0;
+        }
     }
 
     public JButton getBtnRefresh_lhn() {
         return btnRefresh_lhn;
     }
 
-    public String getTxHarga_upd() {
-        return txHarga_upd.getText();
+    public long getTxHarga_upd() {
+        if(!txHarga_upd.getText().equals("")) {
+            return Long.parseLong(txHarga_upd.getText());   
+        }
+        else {
+            return 0;
+        }
     }
 
     public int getTxJumlah_upd() {
@@ -712,13 +727,14 @@ public class ViewOlahData extends javax.swing.JFrame implements View {
     }
     
     
-    public void showData_brg(String kode, String nama, String kategori, int jumlah, String harga, String lokasi,int i) {
+    public void showData_brg(String kode, String nama, String kategori, int jumlah, String harga, String lokasi,String pemilik,int i) {
         tabelData_brg.getModel().setValueAt(kode, i, 0);
         tabelData_brg.getModel().setValueAt(nama, i, 1);
         tabelData_brg.getModel().setValueAt(kategori, i, 2);
         tabelData_brg.getModel().setValueAt(jumlah, i, 3);
         tabelData_brg.getModel().setValueAt(harga, i, 4);
         tabelData_brg.getModel().setValueAt(lokasi, i, 5);
+        tabelData_brg.getModel().setValueAt(pemilik, i, 6);
     }
     public void showData_lhn(String kode, String luas, String nama, String harga, String pemilik,int i) {
         tabelData_lhn.getModel().setValueAt(kode, i, 0);

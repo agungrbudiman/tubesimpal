@@ -15,10 +15,10 @@ public class DataAset {
     private String pemilikAset;
     private int jumlahAset;
     private String KategoriAset;
-    private String hargaAset;
+    private long hargaAset;
     private LokasiAset lokasiAset;
 
-    public DataAset(String kodeAset, String namaAset, String pemilikAset, String KategoriAset, String hargaAset) {
+    public DataAset(String kodeAset, String namaAset, String pemilikAset, String KategoriAset, long hargaAset) {
         this.kodeAset = kodeAset;
         this.namaAset = namaAset;
         this.pemilikAset = pemilikAset;
@@ -56,10 +56,10 @@ public class DataAset {
         this.jumlahAset = jumlahAset;
     }
     
-    public String getHargaAset(){
+    public long getHargaAset(){
         return hargaAset;
     }
-    public void setHargaAset(String hargaAset) {
+    public void setHargaAset(long hargaAset) {
         this.hargaAset = hargaAset;
     }
     
