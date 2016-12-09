@@ -34,6 +34,10 @@ public class Barang extends DataAset {
     public void setKondisi(String kondisi) {
         this.kondisi = kondisi;
     }
+
+    public ArrayList<Riwayat> getRiwayat() {
+        return riwayat;
+    }
     
     
     

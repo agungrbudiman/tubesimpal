@@ -7,6 +7,8 @@ package view;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,12 +22,12 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
     public ViewPelaporan() {
         initComponents();
         this.setLocationRelativeTo(null);
-        btnGroup1.add(jRadioButton1);
-        btnGroup1.add(jRadioButton2);
-        btnGroup1.add(jRadioButton3);
-        btnGroup2.add(jRadioButton7);
-        btnGroup2.add(jRadioButton8);
-        btnGroup2.add(jRadioButton9);
+        btnGroup1.add(ready_kond);
+        btnGroup1.add(rusak_kond);
+        btnGroup1.add(onservice_kond);
+        btnGroup2.add(mingguan_hist);
+        btnGroup2.add(bulanan_hist);
+        btnGroup2.add(tahunan_hist);
     }
 
     /**
@@ -42,30 +44,31 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelKondisi = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        ready_kond = new javax.swing.JRadioButton();
+        rusak_kond = new javax.swing.JRadioButton();
+        onservice_kond = new javax.swing.JRadioButton();
+        btnOK_kond = new javax.swing.JButton();
+        btnPrint_kond = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnOK_hist = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelHistori = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
+        mingguan_hist = new javax.swing.JRadioButton();
+        bulanan_hist = new javax.swing.JRadioButton();
+        tahunan_hist = new javax.swing.JRadioButton();
+        btnPrint_hist = new javax.swing.JButton();
         btnKembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pelaporan");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelKondisi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -77,18 +80,31 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Barang", "Nama Barang", "Lokasi Barang", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jLabel1.setText("Pilih Periode Laporan");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabelKondisi);
 
-        jRadioButton1.setText("mingguan");
+        jLabel1.setText("Pilih kondisi barang");
 
-        jRadioButton2.setText("bulanan");
+        ready_kond.setText("ready");
 
-        jRadioButton3.setText("tahunan");
+        rusak_kond.setText("rusak");
+        rusak_kond.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rusak_kondActionPerformed(evt);
+            }
+        });
+
+        onservice_kond.setText("on service");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,10 +113,10 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton3)
+                    .addComponent(ready_kond)
+                    .addComponent(onservice_kond)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rusak_kond))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,15 +125,17 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(ready_kond)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(rusak_kond)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(onservice_kond)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jButton1.setText("OK");
+        btnOK_kond.setText("OK");
+
+        btnPrint_kond.setText("Print");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -126,9 +144,15 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnOK_kond)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPrint_kond)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,18 +161,18 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)))
+                        .addComponent(btnOK_kond))
+                    .addComponent(btnPrint_kond, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Laporan Kondisi Barang", jPanel2);
 
-        jButton2.setText("OK");
+        btnOK_hist.setText("OK");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelHistori.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -160,18 +184,26 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode barang", "Tanggal", "Pengguna", "Detail"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabelHistori);
 
         jLabel4.setText("Pilih Periode Laporan");
 
-        jRadioButton7.setText("mingguan");
+        mingguan_hist.setText("mingguan");
 
-        jRadioButton8.setText("bulanan");
+        bulanan_hist.setText("bulanan");
 
-        jRadioButton9.setText("tahunan");
+        tahunan_hist.setText("tahunan");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -180,10 +212,10 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton9)
+                    .addComponent(mingguan_hist)
+                    .addComponent(tahunan_hist)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton8))
+                    .addComponent(bulanan_hist))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -192,13 +224,15 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton7)
+                .addComponent(mingguan_hist)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton8)
+                .addComponent(bulanan_hist)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton9)
+                .addComponent(tahunan_hist)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
+
+        btnPrint_hist.setText("Print");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -206,9 +240,15 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnOK_hist)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPrint_hist)
+                        .addContainerGap())))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
@@ -218,7 +258,8 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)))
+                        .addComponent(btnOK_hist))
+                    .addComponent(btnPrint_hist, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
         );
@@ -249,6 +290,10 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rusak_kondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rusak_kondActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rusak_kondActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,36 +301,129 @@ public class ViewPelaporan extends javax.swing.JFrame implements View {
     public JButton getBtnKembali() {
         return btnKembali;
     }
+
+    public JButton getBtnOK_hist() {
+        return btnOK_hist;
+    }
+
+    public JButton getBtnOK_kond() {
+        return btnOK_kond;
+    }
+
+    public JButton getBtnPrint_hist() {
+        return btnPrint_hist;
+    }
+
+    public JButton getBtnPrint_kond() {
+        return btnPrint_kond;
+    }
+
+    public JTable getTabelHistori() {
+        return tabelHistori;
+    }
+
+    public JTable getTabelKondisi() {
+        return tabelKondisi;
+    }
     
+    
+    
+    public char getKondisi() {
+        if(ready_kond.isSelected()) {
+            return '1';
+        }
+        else if(rusak_kond.isSelected()) {
+            return '2';
+        }
+        else if(onservice_kond.isSelected()) {
+            return '3';
+        }
+        else {
+            return '0';
+        }
+    }
+    
+    public char getPeriode() {
+        if(mingguan_hist.isSelected()) {
+            return '1';
+        }
+        else if(bulanan_hist.isSelected()) {
+            return '2';
+        }
+        else if(tahunan_hist.isSelected()) {
+            return '3';
+        }
+        else {
+            return '0';
+        }
+    }
+    
+    public void setTabelHistori(String kdbarang, String tanggal, String pengguna, String detail,int i) {
+        tabelHistori.getModel().setValueAt(kdbarang, i, 0);
+        tabelHistori.getModel().setValueAt(tanggal, i, 1);
+        tabelHistori.getModel().setValueAt(pengguna, i, 2);
+        tabelHistori.getModel().setValueAt(detail, i, 3);
+    }
+    
+    public void setTabelKondisi(String kdbarang, String nama, String lokasi, String status,int i) {
+        tabelKondisi.getModel().setValueAt(kdbarang, i, 0);
+        tabelKondisi.getModel().setValueAt(nama, i, 1);
+        tabelKondisi.getModel().setValueAt(lokasi, i, 2);
+        tabelKondisi.getModel().setValueAt(status, i, 3);
+    }
+    
+    public void resetTabelHistori() {
+        for (int i = 0; i < 9; i++) {
+            tabelHistori.getModel().setValueAt("", i, 0);
+            tabelHistori.getModel().setValueAt("", i, 1);
+            tabelHistori.getModel().setValueAt("", i, 2);
+            tabelHistori.getModel().setValueAt("", i, 3);
+        }
+    }
+    
+    public void resetTabelKondisi() {
+        for (int i = 0; i < 9; i++) {
+            tabelKondisi.getModel().setValueAt("", i, 0);
+            tabelKondisi.getModel().setValueAt("", i, 1);
+            tabelKondisi.getModel().setValueAt("", i, 2);
+            tabelKondisi.getModel().setValueAt("", i, 3);
+        }
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroup1;
     private javax.swing.ButtonGroup btnGroup2;
     private javax.swing.JButton btnKembali;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnOK_hist;
+    private javax.swing.JButton btnOK_kond;
+    private javax.swing.JButton btnPrint_hist;
+    private javax.swing.JButton btnPrint_kond;
+    private javax.swing.JRadioButton bulanan_hist;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JRadioButton mingguan_hist;
+    private javax.swing.JRadioButton onservice_kond;
+    private javax.swing.JRadioButton ready_kond;
+    private javax.swing.JRadioButton rusak_kond;
+    private javax.swing.JTable tabelHistori;
+    private javax.swing.JTable tabelKondisi;
+    private javax.swing.JRadioButton tahunan_hist;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void addListener(ActionListener e) {
-     btnKembali.addActionListener(e);
+        btnKembali.addActionListener(e);
+        btnOK_hist.addActionListener(e);
+        btnOK_kond.addActionListener(e);
+        btnPrint_hist.addActionListener(e);
+        btnPrint_kond.addActionListener(e);
     }
 }

@@ -69,9 +69,18 @@
                   <Component id="jScrollPane1" pref="476" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jPanel1" min="-2" pref="135" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnOK_kond" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnPrint_kond" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -82,11 +91,12 @@
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnOK_kond" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnPrint_kond" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="191" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="175" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -99,14 +109,14 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tabelKondisi">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="10">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="4" rowCount="9">
+                        <Column editable="false" title="Kode Barang" type="java.lang.Object"/>
+                        <Column editable="false" title="Nama Barang" type="java.lang.Object"/>
+                        <Column editable="false" title="Lokasi Barang" type="java.lang.Object"/>
+                        <Column editable="false" title="Status" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -121,10 +131,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jRadioButton3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ready_kond" min="-2" max="-2" attributes="0"/>
+                              <Component id="onservice_kond" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" pref="157" max="-2" attributes="0"/>
-                              <Component id="jRadioButton2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="rusak_kond" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -136,11 +146,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="ready_kond" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="rusak_kond" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="onservice_kond" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="17" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -149,29 +159,37 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Pilih Periode Laporan"/>
+                    <Property name="text" type="java.lang.String" value="Pilih kondisi barang"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+                <Component class="javax.swing.JRadioButton" name="ready_kond">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="mingguan"/>
+                    <Property name="text" type="java.lang.String" value="ready"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+                <Component class="javax.swing.JRadioButton" name="rusak_kond">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="bulanan"/>
+                    <Property name="text" type="java.lang.String" value="rusak"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rusak_kondActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+                <Component class="javax.swing.JRadioButton" name="onservice_kond">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="tahunan"/>
+                    <Property name="text" type="java.lang.String" value="on service"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnOK_kond">
               <Properties>
                 <Property name="text" type="java.lang.String" value="OK"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnPrint_kond">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Print"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -190,9 +208,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jPanel4" min="-2" pref="135" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnOK_hist" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnPrint_hist" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Component id="jScrollPane2" pref="476" max="32767" attributes="0"/>
               </Group>
@@ -204,8 +231,9 @@
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnOK_hist" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnPrint_hist" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" pref="191" max="32767" attributes="0"/>
@@ -214,7 +242,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="btnOK_hist">
               <Properties>
                 <Property name="text" type="java.lang.String" value="OK"/>
               </Properties>
@@ -226,14 +254,14 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable2">
+                <Component class="javax.swing.JTable" name="tabelHistori">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="10">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      <Table columnCount="4" rowCount="9">
+                        <Column editable="false" title="Kode barang" type="java.lang.Object"/>
+                        <Column editable="false" title="Tanggal" type="java.lang.Object"/>
+                        <Column editable="false" title="Pengguna" type="java.lang.Object"/>
+                        <Column editable="false" title="Detail" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -248,10 +276,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jRadioButton7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jRadioButton9" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="mingguan_hist" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="tahunan_hist" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                              <Component id="jRadioButton8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="bulanan_hist" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -263,11 +291,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jRadioButton7" min="-2" max="-2" attributes="0"/>
+                          <Component id="mingguan_hist" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jRadioButton8" min="-2" max="-2" attributes="0"/>
+                          <Component id="bulanan_hist" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jRadioButton9" min="-2" max="-2" attributes="0"/>
+                          <Component id="tahunan_hist" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="17" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -279,23 +307,28 @@
                     <Property name="text" type="java.lang.String" value="Pilih Periode Laporan"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton7">
+                <Component class="javax.swing.JRadioButton" name="mingguan_hist">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="mingguan"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton8">
+                <Component class="javax.swing.JRadioButton" name="bulanan_hist">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="bulanan"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton9">
+                <Component class="javax.swing.JRadioButton" name="tahunan_hist">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="tahunan"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="btnPrint_hist">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Print"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

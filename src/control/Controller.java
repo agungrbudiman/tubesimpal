@@ -7,6 +7,8 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import model.*;
 import view.*;
@@ -26,7 +28,7 @@ public class Controller implements ActionListener {
         this.app = app;
         session = null;
         barang = null;
-        halamanutama();
+        login();
     }
 
     private void halamanutama() {
@@ -263,6 +265,101 @@ public class Controller implements ActionListener {
             if (source.equals(x.getBtnKembali())) {
                 halamanutama();
                 x.dispose();
+            }
+            else if(source.equals(x.getBtnOK_hist())) {
+                x.resetTabelHistori();
+                char periode = x.getPeriode();
+                if(periode != '0') {
+                    switch (periode) {
+                        case '1' : 
+                            for (Barang b : app.listBarang) {
+                                int i = 0;
+                                for (Riwayat r : b.getRiwayat()) {
+                                    Calendar c = new GregorianCalendar();
+                                    c.setTime(r.getTanggal());
+                                    if(c.get(Calendar.WEEK_OF_MONTH) == Calendar.getInstance().get(Calendar.WEEK_OF_MONTH)) {
+                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(),i);
+                                        i++;
+                                    }
+                                }
+                            }break; 
+                        case '2' :
+                            for (Barang b : app.listBarang) {
+                                int i = 0;
+                                for (Riwayat r : b.getRiwayat()) {
+                                    Calendar c = new GregorianCalendar();
+                                    c.setTime(r.getTanggal());
+                                    if(c.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
+                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(),i);
+                                        i++;
+                                    }
+                                }
+                            }break;
+                        case '3' :
+                            for (Barang b : app.listBarang) {
+                                int i = 0;
+                                for (Riwayat r : b.getRiwayat()) {
+                                    Calendar c = new GregorianCalendar();
+                                    c.setTime(r.getTanggal());
+                                    if(c.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
+                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(),i);
+                                        i++;
+                                    }
+                                }
+                            }break;
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(x.getRootPane(), "Pilih periode telebih dahulu", "Gagal", 0);
+                }
+            }
+            else if(source.equals(x.getBtnOK_kond())) {
+                x.resetTabelKondisi();
+                char kondisi = x.getKondisi();
+                String filter = "";
+                if(kondisi != '0') {
+                    switch(kondisi) {
+                        case '1' : filter = "Ready";break;
+                        case '2' : filter = "Rusak";break;
+                        case '3' : filter = "on service";break;
+                    }
+                    int i = 0;
+                    for (Barang b : app.listBarang) {
+                        if(b.getKondisi().equals(filter)) {
+                            x.setTabelKondisi(b.getKodeAset(), b.getNamaAset(), b.getLokasiAset().getNamalokasi(), b.getKondisi(), i);
+                            i++;
+                        }
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(x.getRootPane(), "Pilih periode telebih dahulu", "Gagal", 0);
+                }
+            }
+            else if(source.equals(x.getBtnPrint_hist())) {
+                try {
+                    boolean complete = x.getTabelHistori().print();
+                    if (complete) {
+                        JOptionPane.showMessageDialog(x.getRootPane(), "Print berhasil", "Berhasil", 1);
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(x.getRootPane(), "Print dibatalkan", "Gagal", 0);
+                    }
+                } catch (Exception ee) {
+                    JOptionPane.showMessageDialog(x.getRootPane(), ee, "Gagal", 0);
+                }
+            }
+            else if(source.equals(x.getBtnPrint_kond())) {
+                try {
+                    boolean complete = x.getTabelKondisi().print();
+                    if (complete) {
+                        JOptionPane.showMessageDialog(x.getRootPane(), "Print berhasil", "Berhasil", 1);
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(x.getRootPane(), "Print dibatalkan", "Gagal", 0);
+                    }
+                } catch (Exception ee) {
+                    JOptionPane.showMessageDialog(x.getRootPane(), ee, "Gagal", 0);
+                }
             }
         }
     }

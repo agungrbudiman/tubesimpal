@@ -21,4 +21,21 @@ public class Riwayat {
         this.pengguna = pengguna;
         this.detail = detail;
     }
+
+    public Date getTanggal() {
+        return tanggal;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public Pengguna getPengguna() {
+        return pengguna;
+    }
+
+    public void setTanggal(Date tanggal) {
+        this.tanggal = tanggal;
+    }
+    
 }

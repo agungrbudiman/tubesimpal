@@ -85,7 +85,12 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
 
         jLabel4.setText("Kondisi :");
 
-        cbKondisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ready", "Rusak", "Sedang diperbaiki" }));
+        cbKondisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ready", "Rusak", "on service" }));
+        cbKondisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbKondisiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,6 +192,10 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
     private void txNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNamaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txNamaActionPerformed
+
+    private void cbKondisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKondisiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbKondisiActionPerformed
 
     /**
      * @param args the command line arguments
