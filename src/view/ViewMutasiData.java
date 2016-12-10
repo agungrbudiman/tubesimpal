@@ -86,6 +86,7 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
         jLabel4.setText("Kondisi :");
 
         cbKondisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ready", "Rusak", "on service" }));
+        cbKondisi.setSelectedItem(null);
         cbKondisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbKondisiActionPerformed(evt);
@@ -230,7 +231,8 @@ public class ViewMutasiData extends javax.swing.JFrame implements View {
     }
     
     public void setKondisi(String s) {
-        cbKondisi.addItem(s);
+        cbKondisi.setSelectedItem(s);     
+
     }
     
     public String getKondisi() {

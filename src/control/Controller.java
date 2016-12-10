@@ -123,6 +123,7 @@ public class Controller implements ActionListener {
                 if (barang != null) {
                     x.setNama(barang.getNamaAset());
                     x.setPemilik(barang.getPemilikAset());
+                    x.setKondisi(barang.getKondisi());
                     JOptionPane.showMessageDialog(x.getRootPane(), "Barang ditemukan", "Ditemukan", 1);
                 } else {
                     JOptionPane.showMessageDialog(x.getRootPane(), "Barang tidak ditemukan", "Gagal", 0);
@@ -130,9 +131,8 @@ public class Controller implements ActionListener {
             } else if (source.equals(x.getBtnMutasi())) {
                 if (barang != null) {
                     String pemilik = x.getPemilik_baru();
-                    x.setKondisi(barang.getKondisi());
+                    String kondisi = x.getKondisi();
                     if(!pemilik.equals("")) { 
-                        String kondisi = x.getKondisi();
                         barang.setPemilikAset(pemilik);
                         barang.setKondisi(kondisi);
                         barang.addRiwayat(new Riwayat(session,"mutasi data"));
@@ -194,6 +194,7 @@ public class Controller implements ActionListener {
                     if (!kode.equals("") && !nama.equals("")) {
                         app.addLokasiAset(new LokasiAset(kode, nama));
                         JOptionPane.showMessageDialog(x.getRootPane(), "Data telah disimpan", "Berhasil", 1);
+                        x.dispose();
                         olahdata();
                     } else {
                         JOptionPane.showMessageDialog(x.getRootPane(), "Kolom harus diisi semua", "Gagal", 0);
@@ -269,47 +270,48 @@ public class Controller implements ActionListener {
             else if(source.equals(x.getBtnOK_hist())) {
                 x.resetTabelHistori();
                 char periode = x.getPeriode();
+                Calendar c = new GregorianCalendar();
                 if(periode != '0') {
+                int i = 0; 
                     switch (periode) {
-                        case '1' : 
+                        case '1':
+                            i = 0;
                             for (Barang b : app.listBarang) {
-                                int i = 0;
                                 for (Riwayat r : b.getRiwayat()) {
-                                    Calendar c = new GregorianCalendar();
                                     c.setTime(r.getTanggal());
-                                    if(c.get(Calendar.WEEK_OF_MONTH) == Calendar.getInstance().get(Calendar.WEEK_OF_MONTH)) {
-                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(),i);
+                                    if (c.get(Calendar.WEEK_OF_MONTH) == Calendar.getInstance().get(Calendar.WEEK_OF_MONTH)) {
+                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(), i);
                                         i++;
                                     }
                                 }
-                            }break; 
-                        case '2' :
+                            }
+                            break;
+                        case '2':
+                            i = 0;
                             for (Barang b : app.listBarang) {
-                                int i = 0;
                                 for (Riwayat r : b.getRiwayat()) {
-                                    Calendar c = new GregorianCalendar();
                                     c.setTime(r.getTanggal());
-                                    if(c.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
-                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(),i);
+                                    if (c.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)) {
+                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(), i);
                                         i++;
                                     }
                                 }
-                            }break;
-                        case '3' :
+                            }
+                            break;
+                        case '3':
+                            i = 0;
                             for (Barang b : app.listBarang) {
-                                int i = 0;
                                 for (Riwayat r : b.getRiwayat()) {
-                                    Calendar c = new GregorianCalendar();
                                     c.setTime(r.getTanggal());
-                                    if(c.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
-                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(),i);
+                                    if (c.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
+                                        x.setTabelHistori(b.getKodeAset(), r.getTanggal().toLocaleString(), r.getPengguna().getNamaUser(), r.getDetail(), i);
                                         i++;
                                     }
                                 }
-                            }break;
+                            }
+                            break;
                     }
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(x.getRootPane(), "Pilih periode telebih dahulu", "Gagal", 0);
                 }
             }

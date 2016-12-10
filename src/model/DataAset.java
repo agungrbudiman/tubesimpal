@@ -9,7 +9,7 @@ package model;
  *
  * @author agungrb
  */
-public class DataAset {
+    public class DataAset {
     private String kodeAset;
     private String namaAset;
     private String pemilikAset;
